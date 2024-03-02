@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#pubu.sh
+#https://github.com/moddie666/pubu.sh
 #
 
 DEPS="curl jq"
