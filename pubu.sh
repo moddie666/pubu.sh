@@ -17,12 +17,13 @@ ME=$(basename $0)
 USAGE="# SEND MESSAGE VIA PUSHBULLET API
 USAGE: $ME <command> <access token> [title] [message]
 COMMANDS:
+             h(elp) ... show this text
           d(evices) ... list devices
              p(ush) ... push a message"
 
 pushes(){
    if [ "x$1" = "x" ] || [ "x$2" = "x" ] || [ "x$3" = "x" ]
-   then echo "$USAGE"
+   then echo -e "Missing data.\n$USAGE"
         exit 1
    fi
    TOK="$1"
@@ -37,7 +38,7 @@ pushes(){
 
 devices(){
    if [ "x$1" = "x" ]
-   then echo "$USAGE"
+   then echo "Missing access token."
         exit 1
    fi
    TOK="$1"
@@ -46,13 +47,15 @@ devices(){
 }
 
 
-case $1 in 
+case $1 in
+                          h|he|hel|help) echo "$USAGE"
+                                         exit 0;;
      d|de|dev|devi|devic|device|devices) shift
                                          devices "$@";;
                           p|pu|pus|push) shift
                                          pushes "$@";;
                                       *) echo "Unknown Command: $@"
-                                         echo "$USAGE"
+                                         echo "Use '$ME help' to show usage."
                                          exit 1;;
 esac
 
