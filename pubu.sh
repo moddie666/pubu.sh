@@ -51,7 +51,7 @@ case $1 in
                                          devices "$@";;
                           p|pu|pus|push) shift
                                          pushes "$@";;
-                                      *) echo "Unknown Command $1"
+                                      *) echo "Unknown Command: $@"
                                          echo "$USAGE"
                                          exit 1;;
 esac
