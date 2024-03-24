@@ -33,7 +33,7 @@ pushes(){
         --header 'Content-Type: application/json' \
         --data-binary "{\"body\":$BODY,\"title\":$TITLE,\"type\":\"note\"}" \
         --request POST \
-        https://api.pushbullet.com/v2/pushes | jq -r | echo "Failed to parse API response"
+        https://api.pushbullet.com/v2/pushes | jq -r || echo "Failed to parse API response"
 }
 
 devices(){
@@ -43,7 +43,7 @@ devices(){
    fi
    TOK="$1"
    curl -s --header "Access-Token: $TOK" \
-        https://api.pushbullet.com/v2/devices | jq -r '.devices[] | {iden: .iden, nick: .nickname}' | echo "Failed to parse API response"
+        https://api.pushbullet.com/v2/devices | jq -r '.devices[] | {iden: .iden, nick: .nickname}' || echo "Failed to parse API response"
 }
 
 
